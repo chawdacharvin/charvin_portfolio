@@ -23,7 +23,7 @@
                  {% for project in projects %}
                 <div class="col-md-6 col-lg-4 project-item" data-category="{{project.category}}">
                     <div class="card project-card">
-                        <img src="{% static 'images/' %}{{project.title}}.webp" alt="{{project.title}}">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{project.title}}</h5>
                             <p class="card-text">{{project.description}}</p>
