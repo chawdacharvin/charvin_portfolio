@@ -1,0 +1,105 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hello", "Hi", "Hey", "Good morning", "Good evening", "Greetings", "How's it going?", "Yo!"
+      ],
+      "responses": [
+        "Hello! How can I assist you today?", 
+        "Hi there! How can I help you?", 
+        "Hey! Looking for information about Charvin's work?", 
+        "Greetings! Let me know how I can assist you."
+      ]
+    },
+    {
+      "tag": "introduction",
+      "patterns": [
+        "Who are you?", "What is your name?", "Tell me about yourself", "What's your identity?"
+      ],
+      "responses": [
+        "I am an AI assistant built by Charvin to provide insights into his work and expertise.",
+        "I'm Charvin's portfolio assistant, here to help you navigate his projects and skills.",
+        "I am an AI-powered chatbot designed to showcase Charvin's experience and achievements."
+      ]
+    },
+    {
+      "tag": "about_charvin",
+      "patterns": [
+        "Who is Charvin?", "Tell me about Charvin", "What does Charvin do?", "Give me a short bio of Charvin"
+      ],
+      "responses": [
+        "Charvin is a skilled Django backend developer with expertise in AI/ML. He has worked on various projects, including AI-powered e-commerce platforms, course recommendation systems, and intelligent chatbots.",
+        "Charvin is a technology enthusiast specializing in Django, AI, and backend development. He enjoys building scalable, AI-driven applications.",
+        "Charvin is a Computer Science Engineering student with a passion for AI, Machine Learning, and web development."
+      ]
+    },
+    {
+      "tag": "projects",
+      "patterns": [
+        "What projects have you worked on?", "Tell me about your projects", "List your projects", "What AI projects have you completed?"
+      ],
+      "responses": [
+        "Charvin has developed an AI-powered e-commerce platform, a demand prediction model, a chatbot, a course recommendation system, and a Django-based portfolio website.",
+        "His projects include an AI-driven chatbot, a machine learning-based demand forecasting system, and a blog website with AI-generated summaries.",
+        "Charvin has built various applications using Django and AI, including intelligent recommendation systems and predictive analytics tools."
+      ]
+    },
+    {
+      "tag": "skills",
+      "patterns": [
+        "What are your skills?", "What technologies do you specialize in?", "What programming languages do you use?"
+      ],
+      "responses": [
+        "Charvin is proficient in Django, Python, Machine Learning, and backend development.",
+        "His expertise includes Django, AI/ML, data science, and scalable backend development.",
+        "He specializes in Python, Django, and AI-powered application development."
+      ]
+    },
+    {
+      "tag": "technologies",
+      "patterns": [
+        "Which technologies do you work with?", "What tech stack do you use?", "Which frameworks do you know?"
+      ],
+      "responses": [
+        "Charvin works with Django, Python, PostgreSQL, TensorFlow, and NumPy.",
+        "His tech stack includes Django for backend development, AI/ML frameworks like TensorFlow, and database management with PostgreSQL and MySQL.",
+        "He leverages Django, Python, and AI/ML tools to develop intelligent applications."
+      ]
+    },
+    {
+      "tag": "portfolio",
+      "patterns": [
+        "Where can I see your portfolio?", "Do you have a portfolio website?", "Can I check your portfolio online?"
+      ],
+      "responses": [
+        "Yes! You can explore my portfolio at www.charvin-portfolio.com.",
+        "Visit www.charvin-portfolio.com to learn more about my work and projects.",
+        "You can check out my latest projects and skills at www.charvin-portfolio.com."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "How can I contact you?", "Where can I reach you?", "How do I connect with you?"
+      ],
+      "responses": [
+        "You can reach out to me via email at charvin@example.com.",
+        "Feel free to connect with me through LinkedIn or email me at charvin@example.com.",
+        "I am available for inquiries via email at charvin@example.com."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye", "See you", "Goodbye", "Take care"
+      ],
+      "responses": [
+        "Goodbye! Have a great day!", 
+        "See you soon!", 
+        "Take care!", 
+        "Bye! Hope to chat again soon."
+      ]
+    }
+  ]
+}

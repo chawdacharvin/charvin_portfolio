@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Charvin Chawda | ML & Django Developer{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body class="light-mode">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">Charvin Chawda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'project' %}">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="btn"><i class="fas fa-moon"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+
+<button id="chatbot-btn" class="btn btn-primary chatbot-toggle">
+    <i class="bi bi-chat-dots-fill"></i> <!-- Chat Icon -->
+</button>
+
+<!-- Chatbot Sidebar -->
+<div id="chatbot-sidebar" class="chatbot-sidebar">
+    <!-- Chatbot Header -->
+    <div class="chat-header">
+        <h5>Chatbot</h5>
+        <button class="btn btn-danger" id="close-chatbot">
+            <i class="bi bi-x-circle-fill"></i> <!-- Close Icon -->
+        </button>
+    </div>
+
+    <!-- Chatbox Messages -->
+    <div class="chat-box" id="chat-box">
+        <div class="chat-message bot-message">Hello! How can I help you today?</div>
+    </div>
+
+    <!-- Chat Input Area (With CSRF Token) -->
+    <form id="chat-form">
+        {% csrf_token %}
+        <div class="chat-input">
+            <input type="text" id="user-input" class="form-control" placeholder="Type a message..." required>
+            <button type="submit" id="send-btn" class="btn btn-primary">
+                <i class="bi bi-send"></i> <!-- Send Icon -->
+            </button>
+        </div>
+    </form>
+</div>
+<style>
+.chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Chatbot Sidebar */
+.chatbot-sidebar {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 380px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 9998;
+    border-radius: 10px 0 0 10px;
+}
+
+/* Chat Header */
+.chat-header {
+    background: #007bff;
+    color: white;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 10px 0 0 0;
+}
+
+.chat-header button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chat-header button:hover {
+    color: #ff4d4d;
+}
+
+/* Chatbox Messages */
+.chat-box {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scroll-behavior: smooth;
+}
+
+/* Chat Message Styling */
+.chat-message {
+    padding: 12px;
+    border-radius: 20px;
+    max-width: 75%;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bot Message */
+.bot-message {
+    background: #e9ecef;
+    color: black;
+    text-align: left;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+/* User Message */
+.user-message {
+    background: #007bff;
+    color: white;
+    text-align: right;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+/* Chat Input */
+.chat-input {
+    display: flex;
+    padding: 12px;
+    background: white;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+
+.chat-input button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border-radius: 50%;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.chat-input button:hover {
+    background: #0056b3;
+}
+
+/* Dark Mode Styles */
+.dark-mode .chatbot-sidebar {
+    background: #222;
+    color: white;
+}
+
+.dark-mode .chat-box {
+    background: #333;
+}
+
+.dark-mode .user-message {
+    background: #0d6efd;
+}
+
+.dark-mode .bot-message {
+    background: #444;
+    color: white;
+}
+
+/* Hide chatbot button when sidebar is open */
+.chatbot-toggle:focus {
+    outline: none;
+}
+</style> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/chatbot.js' %}"></script>
+</body>
+</html>

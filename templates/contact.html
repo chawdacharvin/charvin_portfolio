@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact | Charvin Chawda{% endblock %}
+
+{% block content %}
+
+<section id="contact" class="min-vh-100 py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="section-title text-center mb-5">Get In Touch</h2>
+                <form action="{% url 'contact' %}" id="contact-form" method="post" class="contact-form">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label  class="form-label">Name</label>
+                        {{ form.name }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label  class="form-label">Email</label>
+                        {{ form.email }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label  class="form-label">Company/Organization</label>
+                        {{ form.organization }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label  class="form-label">Message</label>
+                        {{ form.message }}
+                    </div>
+
+                    <input type="submit" value = "Send Message" class="btn btn-primary"></input>
+                </form>
+                <div class="tooltip-container">
+                    📧
+                    <div class="tooltip">This form sends messages directly to my email using Django's email API.</div>
+                </div>
+                
+
+                <div class="social-links text-center mt-5">
+                    <a href="https://www.linkedin.com/in/charvin-chawda-81324825a/" target="_blank" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a target="_blank" href="https://github.com/chawdacharvin" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chawdacharvinj@gmail.com" target="_blank" class="social-link" title="Twitter">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<style>
+    .tooltip-container {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: auto; /* Auto width to adjust based on text */
+    max-width: 320px; /* Ensure it stays within a readable width */
+    background-color: #222;
+    color: #fff;
+    text-align: left; /* Align text to the left for a natural look */
+    padding: 8px 12px;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-size: 14px;
+    line-height: 1.6; 
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    white-space: normal; 
+    word-wrap: break-word; 
+}
+
+/* Tooltip Arrow */
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #222 transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+</style>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Projects | Charvin Chawda{% endblock %}
+
+<!-- Projects Section -->
+ {% block content %}
+    <section id="projects" class="min-vh-100 py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">My Projects</h2>
+            
+            <div class="filters mb-4">
+                <button class="btn btn-outline-primary active" data-filter="all">All</button>
+                <button class="btn btn-outline-primary" data-filter="ml">Machine Learning</button>
+                <button class="btn btn-outline-primary" data-filter="django">Django Backend</button>
+                <!-- <button class="btn btn-outline-primary" data-filter="cpp">C/C++ Projects</button> -->
+            </div>
+
+            <div class="row g-4" id="projects-grid">
+                <!--Project-->
+
+                 {% for project in projects %}
+                <div class="col-md-6 col-lg-4 project-item" data-category="{{project.category}}">
+                    <div class="card project-card">
+                        <img src="{% static 'images/' %}{{project.title}}.webp" alt="{{project.title}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{project.title}}</h5>
+                            <p class="card-text">{{project.description}}</p>
+                            {% if project.link %}
+    <div class="project-links" style="display: flex; gap: 10px; align-items: center;">
+        <a href="{{ project.link }}" target="_blank" class="btn btn-primary btn-sm">Github</a>
+        {% if project.livedemo %}
+            <a href="{{ project.livedemo }}" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+        {% endif %}
+    </div>
+{% endif %}
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Charvin Chawda | ML Developer{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="hero" class="min-vh-100 d-flex align-items-center">
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-3">Charvin Chawda</h1>
+                <p class="lead mb-4">ML & Django Backend Developer</p>
+                <p class="subtitle mb-5">Building intelligent solutions with code</p>
+                <div class="hero-btns d-flex justify-content-center gap-3">
+                    <a href="{% url 'project' %}" class="btn btn-primary btn-lg">View My Work</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary btn-lg">Get in Touch</a>
+                </div>
+                <div class="tech-stack mt-5">
+                    <i class="fab fa-python tech-icon" title="Python"></i>
+                    <i class="fas fa-brain tech-icon" title="Machine Learning"></i>
+                    <i class="fab fa-django tech-icon" title="Django"></i>
+                    <i class="fas fa-database tech-icon" title="SQL"></i>
+                    <i class="fas fa-code tech-icon" title="C/C++"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

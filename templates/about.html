@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About | Charvin Chawda{% endblock %}
+
+{% block content %}
+<!-- About Section -->
+<section id="about" class="min-vh-100 py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-img-container">
+                    <img src="{% static 'images/Profile.jpg' %}" alt="Charvin Chawda" class="img-fluid rounded-3">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section-title">About Me</h2>
+                <p class="lead">Hi, I'm Charvin Chawda, a passionate ML & Django Backend Developer with expertise in building intelligent and scalable applications.</p>
+                <p>With a strong foundation in C/C++ and Python, I specialize in developing machine learning solutions and robust backend systems. My experience spans from implementing complex ML algorithms to creating efficient Django applications.</p>
+                
+                <div class="skills-section mt-4">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-bar">
+                        <span class="skill-label">💻 Programming Languages(C/C++, python, HTML/CSS)</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-label">🤖 AI & ML(Numpy, pandas, Scikit-Learn etc.)</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-label">⚙ Backend Development & APIs (Django and DRF)</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-label">📂 Other skills (databases, DSA and Softskills such as Adaptibility, Team-work etc. )</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a target="_blank" href="https://drive.google.com/file/d/1lpngEPTYlCxD78r7jMphptiskBedjZQN/view?usp=sharing" class="btn btn-primary mt-4" download>
+                    <i class="fas fa-download me-2"></i>Download Resume
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
